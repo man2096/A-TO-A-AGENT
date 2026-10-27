@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude to ChatGPT Handoff</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Claude to ChatGPT</h1>
+  <p class="sub">Carry a chat across when Claude hits its limit.</p>
+
+  <button id="switch" class="primary" type="button">Switch to ChatGPT now</button>
+  <p id="status" class="status" role="status"></p>
+
+  <section>
+    <label class="row"><span>Detect limits automatically</span><input type="checkbox" id="autoDetect"></label>
+    <label class="row"><span>Submit in ChatGPT automatically</span><input type="checkbox" id="autoSubmit"></label>
+    <label class="row"><span>Show button on Claude</span><input type="checkbox" id="showButton"></label>
+    <label class="row"><span>Cancel window (seconds, 0 = none)</span><input type="number" id="countdown" min="0" max="30"></label>
+    <label class="row"><span>Max characters to transfer</span><input type="number" id="maxChars" min="2000" max="400000" step="1000"></label>
+  </section>
+
+  <p class="foot">Attached files and images can't be carried over. Only text is.</p>
+  <script src="popup.js"></script>
+</body>
+</html>

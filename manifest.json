@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Claude to ChatGPT Handoff",
+  "version": "1.0.0",
+  "description": "Detects Claude rate limits and continues your conversation in ChatGPT with the full history and your pending prompt.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://claude.ai/*", "https://chatgpt.com/*"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "Claude to ChatGPT Handoff",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["page_hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["content_claude.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["content_chatgpt.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
